@@ -1,0 +1,2 @@
+class StudentNotification < ApplicationRecord
+end
