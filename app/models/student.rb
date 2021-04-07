@@ -6,4 +6,8 @@ class Student < ApplicationRecord
          
   attachment :image
 
+  has_many :posts
+  has_many :belongings
+  has_many :groups, through: :belongings
+  
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:      'admins/password',
@@ -11,13 +12,24 @@ Rails.application.routes.draw do
   registrations: 'students/registrations'
   }
   
+  #--------admin側----------
+  
   namespace :admin do
     resources :students, only: [:index, :show, :edit, :update]
   end
-
-
+  
+  #-------------------------
+  
+  #--------student側--------
   
   root 'homes#top'
   
   resources :students, only: [:index, :show, :edit, :update]
+  resources :groups, only: [:new, :create, :index, :show]
+  resources :posts, only: [:new, :create]
+  
+  #-------------------------
+  
+  
+  
 end

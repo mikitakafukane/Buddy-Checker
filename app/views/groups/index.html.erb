@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="text-center">グループ一覧</h2>
+  <table class="table table-hover table-borderd table-condensed">
+    <thead>
+      <tr class="info">
+        <th>グループ名</th>
+        <th>参加ボタン</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+      <tr class="info">
+        <th><%= group.name %></th>
+        <th><%= link_to group.name %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
