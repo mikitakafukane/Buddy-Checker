@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="text-center">生徒一覧</h2>
+  <table class="table table-hover table-borderd table-condensed">
+    <thead>
+      <tr class="info">
+        <th>生徒id</th>
+        <th>アイコン画像</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>入学年月</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+      <tr class="info">
+        <th><%= student.id %></th>
+        <th><%#<%= attachment_image_tag student, :image, :fill, 40, 40, format: "jpg", fallback: "no_image.jpg" %></th>
+        <th><%= student.name %></th>
+        <th><%= student.email %></th>
+        <th><%= student.academic_month %></th>
+        <th><%= student.is_deleted %></th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

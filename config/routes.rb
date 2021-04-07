@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
+  passwords:      'admins/password',
   registrations: 'admins/registrations'
   }
   
   devise_for :students, controllers: {
   sessions:      'students/sessions',
-  passwords:     'students/passwords',
+  passwords:      'students/password',
   registrations: 'students/registrations'
   }
   
+  namespace :admin do
+    resources :students, only: [:index, :show, :edit, :update]
+  end
+
+
+  
   root 'homes#top'
   
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :students, only: [:index, :show, :edit, :update]
 end

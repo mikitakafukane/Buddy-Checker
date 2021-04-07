@@ -51,10 +51,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   
-  # エラー画面をわかりやすく整形してくれる
   gem 'better_errors'
-  
-  # better_errorsの画面上にirb/pry(PERL)を表示する
   gem 'binding_of_caller'
 end
 
@@ -70,6 +67,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
