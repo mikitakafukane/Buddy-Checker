@@ -5,8 +5,6 @@ class GroupsController < ApplicationController
       @group = Group.new
       @groups = current_student.groups
       @nongroups = Group.where(id: Belonging.where.not(student_id: current_student.id).pluck(:id))
-      
-      @student = Student.find(params[:id])
     # end
   end
   
@@ -21,6 +19,7 @@ class GroupsController < ApplicationController
     @groups = current_student.groups
     @group = Group.find(params[:id])
     @posts = @group.posts
+    @student = Student.find(params[:id])
   end
   
   private
