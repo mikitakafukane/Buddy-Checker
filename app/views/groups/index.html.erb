@@ -1,19 +1,19 @@
-<div class="container">
-  <h2 class="text-center">グループ一覧</h2>
-  <table class="table table-hover table-borderd table-condensed">
-    <thead>
-      <tr class="info">
-        <th>グループ名</th>
-        <th>参加ボタン</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @groups.each do |group| %>
-      <tr class="info">
-        <th><%= group.name %></th>
-        <th><%= link_to group.name %></th>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<% if student_signed_in? %>
+  <h2>グループ作成</h2>
+  <%= form_with model: @group do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+
+  <h2>参加済グループ一覧</h2>
+  <% @groups.each do |group| %>
+    <%= group.name %>
+    <%= link_to '参加', group_path(group.id) %>
+  <% end %>
+
+  <h2>未参加トークルーム一覧</h2>
+  <% @nongroups.each do |group| %>
+    <%= group.name %>
+  <% end %>
+<% end %>

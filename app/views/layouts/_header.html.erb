@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ff">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ccffcc">
     <div class="container">
       <h3><%= link_to "BuddyChecker", root_path, class: "text-body font-italicn text-decoration-none logo-text" %></h3>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,8 +14,8 @@
         <ul class="navbar-nav ml-auto">
           <% if student_signed_in? %>
             <li class="nav-item"><%= link_to "マイページ", "#", class: "nav-link"  %></li>
-            <li class="nav-item"><%= link_to "商品一覧", "#", class: "nav-link"  %></li>
-            <li class="nav-item"><%= link_to "カート", "#", class: "nav-link"  %></li>
+            <li class="nav-item"><%= link_to "生徒一覧", students_path, class: "nav-link"  %></li>
+            <li class="nav-item"><%= link_to "グループ", groups_path, class: "nav-link"  %></li>
             <li class="nav-item"><%= link_to "ログアウト", destroy_student_session_path, method: :delete, class: "nav-link"  %></li>
           <% elsif current_admin %>
             <li class="nav-item"><%= link_to "商品一覧", "#", class: "nav-link"  %></li>

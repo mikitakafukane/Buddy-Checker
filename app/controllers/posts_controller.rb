@@ -1,23 +1,20 @@
 class PostsController < ApplicationController
   
-  def new
-    @post = current_student.posts.new
-    @group = Group.find_by(id: params[:group_id])
+  def show
+    @student = Student.find(params[:id])
+    @group = Group.find(params[:id])
+    @posts = @group.posts
+    @post = Post.new(group_id: @group.id)
   end
-  
+
   def create
-    @group = Group.find_by(id: params[:group_id])
     @post = current_student.posts.new(post_params)
-    @post.group_id = params[:group_id]
-    if @post.save
-      redirect_to group_path(@group.id)
-    end
+    @post.save
   end
-  
+
   private
-  
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :group_id)
   end
   
 end

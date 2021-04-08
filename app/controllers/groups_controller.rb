@@ -1,40 +1,31 @@
 class GroupsController < ApplicationController
   
-  def new
-    @group = Group.new
-    @group.students << current_student
+  def index
+    # if student_signed_in?
+      @group = Group.new
+      @groups = current_student.groups
+      @nongroups = Group.where(id: Belonging.where.not(student_id: current_student.id).pluck(:id))
+      
+      @student = Student.find(params[:id])
+    # end
   end
   
   def create
-    if Group.create(group_params)
-      redirect_to groups_path, notice: 'グループを作成しました'
-    else
-      render :new
-    end
-  end
-  
-  def index
-    @groups = Group.all.order(updated_at: :desc)
+    @group = Group.new(room_params)
+    @group.save
+    current_student.belongings.create(group_id: @group.id)
+    redirect_to @group
   end
   
   def show
-    @group = Group.find_by(id: params[:id])
-    
-    if !@group.students.include?(current_student)
-      @group.students << current_student
-    end
-    
-    @posts = Post.where(group_id: @group.id).all
+    @groups = current_student.groups
+    @group = Group.find(params[:id])
+    @posts = @group.posts
   end
   
   private
-  
-  def group_params
-    params.require(:group).permit(:name, :student_id)
+  def room_params
+    params.require(:group).permit(:name)
   end
-  
-  def post_params
-    params.require(:post).permit(:content)
-  end
-  
+    
 end

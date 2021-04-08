@@ -25,8 +25,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   
   resources :students, only: [:index, :show, :edit, :update]
-  resources :groups, only: [:new, :create, :index, :show]
-  resources :posts, only: [:new, :create]
+  resources :groups, only: [:create, :index, :show]
+  resources :posts, only: [:create, :show]
   
   #-------------------------
   

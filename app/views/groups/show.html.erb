@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 class="text-center">グループ詳細</h2>
+
+  <p><%= "グループ名：#{@group.name}" %></p>
+
+  <% if current_student != @student %>
+    <%= link_to 'チャットする', post_path(@student.id) %>
+  <% end %>
+</div>
